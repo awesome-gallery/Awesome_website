@@ -168,10 +168,10 @@
          <h3 style="color:red">CARS</h3>
          <div class="gallery">
              <figure>
-                 <img src="/storage/emulated/0/pictures/Dream Artworks/Porsche 1.jpg" alt="Porsche 911 Turbo S"
+                 <img src="/storage/emulated/0/DCIM/camera/fotor_1763734442693.jpg.jpg" alt="fotor_1763734442693.jpg"
                      data-caption="Celestial Streak">
                  <figcaption>Celestial Streak</figcaption>
-                 <a href="/storage/emulated/0/pictures/Dream Artworks/Porsche 1.jpg" download="car_001.jpg"
+                 <a href="/storage/emulated/0/DCIM/camera/fotor_1763734442693.jpg" download="car_001.jpg"
                      class="download-link">Download <i class="fas fa-download"></i></a>
              </figure>
              <figure>
