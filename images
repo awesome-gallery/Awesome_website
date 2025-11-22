@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+  <html lang="en">
+  <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Awesome gallery</title>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+          integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
+          crossorigin="anonymous" referrerpolicy="no-referrer" />
+      <style>
+          body {
+              background-color: green;
+              font-family: sans-serif;
+              margin: 0;
+              padding: 0;
+          }
+          header {
+              text-align: center;
+              padding: 20px;
+              background-color: rgba(0, 0, 0, 0.5);
+              /* Add a semi-transparent background */
+          }
+          header img {
+              width: 100%;
+              height: auto;
+              max-height: 150px;
+              object-fit: contain;
+              display: block;
+              /* Ensure the image is a block-level element */
+              margin: 0 auto;
+              /* Center the image horizontally */
+          }
+          header h3 {
+              color: yellow;
+              font-size: 4em;
+              display: inline-block;
+              margin: 0 10px;
+              vertical-align: middle;
+              /* Align the header text vertically */
+          }
+          #searchInput {
+              padding: 10px;
+              width: 300px;
+              font-size: 16px;
+              margin-bottom: 10px;
+          }
+          button {
+              padding: 10px 20px;
+              font-size: 16px;
+              cursor: pointer;
+          }
+          marquee {
+              color: white;
+              background-color: black;
+              padding: 10px;
+          }
+          article {
+              padding: 20px;
+          }
+          h3 {
+              color: red;
+              margin-bottom: 15px;
+              text-align: center;
+          }
+          .gallery {
+              display: flex;
+              flex-wrap: wrap;
+              justify-content: space-around;
+          }
+          .gallery figure {
+              width: 45%;
+              margin: 10px;
+              text-align: center;
+              box-sizing: border-box;
+              /* Include padding and border in the element's total width and height */
+          }
+          .gallery img {
+              width: 100%;
+              height: auto;
+              border-radius: 5px;
+              display: block;
+              /* Ensure images take up the full width of their container */
+              margin: 0 auto;
+              /* Center images horizontally within their containers */
+              cursor: pointer;
+              /* Add a pointer cursor for images */
+          }
+          .download-link {
+              display: block;
+              margin-top: 5px;
+              color: blue;
+              text-decoration: none;
+          }
+          .download-link i {
+              margin-left: 5px;
+          }
+          /* Responsive layout for smaller screens */
+          @media (max-width: 768px) {
+              .gallery figure {
+                  width: 45%;
+              }
+          }
+          @media (max-width: 480px) {
+              .gallery figure {
+                  width: 100%;
+              }
+          }
+          footer {
+              text-align: center;
+              padding: 20px;
+              color: white;
+          }
+          /* Fullscreen image styles */
+          .fullscreen-overlay {
+              position: fixed;
+              top: 0;
+              left: 0;
+              width: 100%;
+              height: 100%;
+              background-color: rgba(0, 0, 0, 0.9);
+              /* Darken background */
+              display: none;
+              /* Initially hidden */
+              justify-content: center;
+              align-items: center;
+              z-index: 1000;
+              /* Ensure it's on top */
+          }
+          .fullscreen-image {
+              max-width: 90%;
+              max-height: 90%;
+              display: block;
+              /* Ensure proper display */
+              margin: 0 auto;
+              /* Center the image */
+          }
+          .back-button {
+              position: absolute;
+              top: 20px;
+              left: 20px;
+              padding: 10px 20px;
+              font-size: 16px;
+              cursor: pointer;
+              background-color: #555;
+              color: white;
+              border: none;
+              border-radius: 5px;
+              z-index: 1001;
+              /* Ensure button is on top */
+          }
+      </style>
+  </head>
+  <body>
+      <header>
+          <p style="font-size:450%; text-align:center;">
+              <a href="#">
+                  <img src="images/1763584495949~2.jpeg" alt="Awesome Logo">
+              </a>
+              <h3 style="color:yellow; font-size: 4em; display:inline-block;">AWESOME</h3>
+          </p>
+          <input type="text" id="searchInput" placeholder="Search...">
+          <button onclick="searchContent()">Search</button>
+      </header>
+      <marquee behavior="scroll" direction="left"><strong>
+              <h5><b>Say cheese! 📸 Download fabulous free images and spread the visual joy!</b></h5>
+          </strong></marquee>
+      <article data-category="cars">
+          <h3 style="color:red">CARS</h3>
+          <div class="gallery">
+              <figure>
+                  <img src="images/fotor_1763734442693.jpg" alt="fotor_1763734442693"
+                      data-caption="Celestial Streak">
+                  <figcaption>Celestial Streak</figcaption>
+                  <a href="images/fotor_1763734442693.jpg" download="fotor_1763734442693.jpg"
+                      class="download-link">Download <i class="fas fa-download"></i></a>
+              </figure>
+              <figure>
+                  <img src="images/fotor_1763734741049.jpg"
+                      alt="fotor_1763734741049" data-caption="Dynamo">
+                  <figcaption>Dual Dynamo</figcaption>
+                  <a href="images/fotor_1763734741049.jpg" download="fotor_1763734741049.jpg"
+                      class="download-link">Download <i class="fas fa-download"></i></a>
+              </figure>
+              <figure>
+                  <img src="images/fotor_1763734966584.jpg" alt="fotor_1763734966584"
+                      data-caption="Crimson Fury">
+                  <figcaption>Crimson Fury</figcaption>
+                  <a href="images/fotor_1763734966584.jpg" download="car_003.jpg"
+                      class="download-link">Download <i class="fas fa-download"></i></a>
+              </figure>
+              <figure>
+                  <img src="images/fotor_1763734913820.jpg" alt="fotor_1763734913820"
+                      data-caption="Ironclad Colossus">
+                  <figcaption>Ironclad Colossus</figcaption>
+                  <a href="images/fotor_1763734913820.jpg" download="fotor_1763734913820.jpg"
+                      class="download-link">Download <i class="fas fa-download"></i></a>
+              </figure>
+              <figure>
+                  <img src="images/fotor_1763734279167.jpg" alt="fotor_1763734279167"
+                      data-caption="Aurora Racer">
+                  <figcaption>Aurora Racer</figcaption>
+                  <a href="images/fotor_1763734279167.jpg" download="fotor_1763734279167.jpg"
+                      class="download-link">Download <i class="fas fa-download"></i></a>
+              </figure>
+              <figure>
+                  <img src="images/1234.jpg" alt="Mini Cooper"
+                      data-caption="Pocket Rocket">
+                  <figcaption>Pocket Rocket</figcaption>
+                  <a href="images/1234.jpg" download="car_006.jpg"
+                      class="download-link">Download <i class="fas fa-download"></i></a>
+              </figure>
+              <figure>
+                  <img src="images/1243.jpg" alt="Rolls Royce Phantom"
+                      data-caption="Sapphire Chariot">
+                  <figcaption>Sapphire Chariot</figcaption>
+                  <a href="images/1243.jpg" download="car_007.jpg"
+                      class="download-link">Download <i class="fas fa-download"></i></a>
+              </figure>
+              <figure>
+                  <img src="images/Lamborghini 1.jpg"
+                      alt="Lamborghini Aventador" data-caption="Thunderbolt">
+                  <figcaption>Thunderbolt</figcaption>
+                  <a href="images/Lamborghini 1.jpg" download="car_008.jpg"
+                      class="download-link">Download <i class="fas fa-download"></i></a>
+              </figure>
+          </div>
+      </article>
+      <article data-category="robots">
+          <h3 style="color:red">ROBOTS</h3>
+          <div class="gallery">
+              <figure>
+                  <img src="images/Robot3.jpg" alt="Atlas Robot"
+                      data-caption="Shadow Stricker">
+                  <figcaption>Shadow Stricker</figcaption>
+                  <a href="images/Robot3.jpg" download="robot_001.jpg"
+                      class="download-link">Download <i class="fas fa-download"></i></a>
+              </figure>
+              <figure>
+                  <img src="images/Robot1.jpg" alt="Sophia Robot"
+                      data-caption="Lavender">
+                  <figcaption>Lavender</figcaption>
+                  <a href="images/Robot1.jpg" download="robot_002.jpg"
+                      class="download-link">Download <i class="fas fa-download"></i></a>
+              </figure>
+              <figure>
+                  <img src="images/robot.jpg" alt="Cyberdyne HAL"
+                      data-caption="Citrus Guard">
+                  <figcaption>Citrus Guard</figcaption>
+                  <a href="images/robot.jpg" download="robot_003.jpg"
+                      class="download-link">Download <i class="fas fa-download"></i></a>
+              </figure>
+              <figure>
+                  <img src="images/Rr.jpg" alt="Optimus Prime"
+                      data-caption="Cobalt Crusader">
+                  <figcaption>Cobalt Crusader</figcaption>
+                  <a href="images/Rr.jpg" download="robot_004.jpg"
+                      class="download-link">Download <i class="fas fa-download"></i></a>
+              </figure>
+              <figure>
+                  <img src="images/R.jpg" alt="R2-D2" data-caption="Valiant Vanguard">
+                  <figcaption>Valiant Vanguard</figcaption>
+                  <a href="images/R.jpg" download="robot_005.jpg"
+                      class="download-link">Download <i class="fas fa-download"></i></a>
+              </figure>
+              <figure>
+                  <img src="images/Robot5.jpg" alt="Roomba Vacuum"
+                      data-caption="Roomba Vacuum">
+                  <figcaption>Roomba Vacuum</figcaption>
+                  <a href="images/Robot5.jpg" download="robot_006.jpg"
+                      class="download-link">Download <i class="fas fa-download"></i></a>
+              </figure>
+          </div>
+      </article>
+      <article data-category="nature">
+          <h3 style="color:red">NATURE</h3>
+          <div class="gallery">
+              <figure>
+                  <img src="images/N.jpg" alt="Autumn Forest"
+                      data-caption="Autumn Forest">
+                  <figcaption>Autumn Forest</figcaption>
+                  <a href="images/N.jpg" download="nature_001.jpg"
+                      class="download-link">Download <i class="fas fa-download"></i></a>
+              </figure>
+              <figure>
+                  <img src="images/N1.jpg" alt="Mountain Landscape"
+                      data-caption="Mountain Landscape">
+                  <figcaption>Mountain Landscape</figcaption>
+                  <a href="images/N1.jpg" download="nature_002.jpg"
+                      class="download-link">Download <i class="fas fa-download"></i></a>
+              </figure>
+              <figure>
+                  <img src="images/N2.jpg" alt="Green Valley"
+                      data-caption="Green Valley">
+                  <figcaption>Green Valley</figcaption>
+                  <a href="images/N2.jpg" download="nature_003.jpg"
+                      class="download-link">Download <i class="fas fa-download"></i></a>
+              </figure>
+              <figure>
+                  <img src="images/N3.jpg" alt="Sunrise at Beach"
+                      data-caption="Sunlight Meadow">
+                  <figcaption>Sunlight Meadow</figcaption>
+                  <a href="images/N3.jpg" download="nature_004.jpg"
+                      class="download-link">Download <i class="fas fa-download"></i></a>
+              </figure>
+              <figure>
+                  <img src="images/N4.jpg" alt="Clear Lake" data-caption="Golden Glade">
+                  <figcaption>Golden Glade</figcaption>
+                  <a href="images/N4.jpg" download="nature_005.jpg"
+                      class="download-link">Download <i class="fas fa-download"></i></a>
+              </figure>
+              <figure>
+                  <img src="images/N5.jpg" alt="Starry Night Sky"
+                      data-caption="Mossy Brook">
+                  <figcaption>Mossy Brook</figcaption>
+                  <a href="images/N5.jpg" download="nature_006.jpg"
+                      class="download-link">Download <i class="fas fa-download"></i></a>
+              </figure>
+          </div>
+      </article>
+      <article data-category="skyscrapers">
+          <h3 style="color:red">SKYSCRAPERS</h3>
+          <div class="gallery">
+              <figure>
+                  <img src="images/S.jpg" alt="Shanghai Tower"
+                      data-caption="Vertical Vista">
+                  <figcaption>Vertical Vista</figcaption>
+                  <a href="images/S.jpg" download="skyscraper_002.jpg"
+                      class="download-link">Download <i class="fas fa-download"></i></a>
+              </figure>
+              <figure>
+                  <img src="images/S2.jpg" alt="Abraj Al-Bait Clock Tower"
+                      data-caption="Skyward Spires">
+                  <figcaption>Skyward Spires</figcaption>
+                  <a href="images/S2.jpg" download="skyscraper_003.jpg"
+                      class="download-link">Download <i class="fas fa-download"></i></a>
+              </figure>
+              <figure>
+                  <img src="images/S3.jpg" alt="Ping An Finance Centre"
+                      data-caption="Jade Giant">
+                  <figcaption>Jade Giant</figcaption>
+                  <a href="images/S3.jpg" download="skyscraper_004.jpg"
+                      class="download-link">Download <i class="fas fa-download"></i></a>
+              </figure>
+              <figure>
+                  <img src="images/S4.jpg" alt="Lotte World Tower"
+                      data-caption="Ruby Zenith">
+                  <figcaption>Ruby Zenith</figcaption>
+                  <a href="images/S4.jpg" download="skyscraper_005.jpg"
+                      class="download-link">Download <i class="fas fa-download"></i></a>
+              </figure>
+              <figure>
+                  <img src="images/S5.jpg" alt="One World Trade Center"
+                      data-caption="Steel giants">
